@@ -5,12 +5,14 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const twitchUsername = urlParams.get("username") || '';
+const goal = urlParams.get("goal") || 'SUB GOAL';
 
 ///////////////
 // FUNCTIONS //
 ///////////////
 
 async function UpdateMetrics() {
+    document.getElementById("goalLabel").innerHTML = `${goal}: `;
     document.getElementById("subCountLabel").innerHTML = await GetSubCount();
 
     setTimeout(UpdateMetrics, 10000);
